@@ -1,22 +1,42 @@
 /* ==========================================
-   MENÚ SUPERIOR COMPLETAMENTE BLANCO (NAVBAR)
+   RE MODA - ESTILO GENERAL & FONDO
+   ========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Tu fondo de mezclilla editable */
+    background: url('fondo.png') no-repeat center center fixed;
+    background-size: cover;
+    background-color: #0a192f; /* Azul profundo de respaldo si no carga la imagen */
+    color: #ffffff;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    min-height: 100vh;
+    padding-top: 110px; /* Evita que la barra tape el contenido */
+}
+
+/* ==========================================
+   BARRA SUPERIOR COMPLETAMENTE BLANCA (NAVBAR)
    ========================================== */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #ffffff; /* Blanco sólido absoluto */
-    border-bottom: 3px solid #1e40af; /* Línea azul fuerte abajo estilo mezclilla */
+    background-color: #ffffff !important; /* Forzado a blanco puro */
+    border-bottom: 4.5px solid #1e40af; /* Línea azul fuerte */
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 12px 50px;
-    z-index: 1000;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave para separarlo del fondo */
+    z-index: 10000;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Contenedor del Logo ajustable */
 .logo-container {
     display: flex;
     align-items: center;
@@ -24,7 +44,7 @@
 }
 
 .site-logo {
-    max-height: 45px; /* Ajusta tu logo.png para que no deforme el menú */
+    max-height: 45px;
     width: auto;
     object-fit: contain;
 }
@@ -40,8 +60,8 @@
 
 .navbar ul li a {
     text-decoration: none;
-    color: #1e293b; /* Texto oscuro (azul pizarra oscuro) para que resalte sobre el blanco */
-    font-size: 1rem;
+    color: #1e293b !important; /* Texto oscuro para que resalte en lo blanco */
+    font-size: 0.95rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -50,9 +70,166 @@
     border-radius: 4px;
 }
 
-/* Efecto Hover (pasar el mouse) y página Activa */
+/* Hover y botón activo */
 .navbar ul li a:hover, .navbar ul li a.active {
-    color: #ffffff; /* El texto se vuelve blanco */
-    background-color: #2563eb; /* El fondo del botón cambia a azul eléctrico */
-    box-shadow: 3px 3px 0px #1d4ed8; /* Sombra tridimensional azul */
+    color: #ffffff !important;
+    background-color: #2563eb !important; /* Azul eléctrico */
+    box-shadow: 3px 3px 0px #1d4ed8;
+}
+
+/* ==========================================
+   ESTRUCTURA LOBBY (COLUMNAS DE LA IMAGEN)
+   ========================================== */
+.main-container {
+    display: flex;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 30px;
+    gap: 50px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* --- COLUMNA IZQUIERDA: TARJETA DE INFO --- */
+.info-column {
+    flex: 1.2;
+    min-width: 350px;
+}
+
+.paper-bento {
+    background-color: rgba(248, 250, 252, 0.95); /* Fondo blanco-grisáceo para la info */
+    color: #0f172a; 
+    padding: 35px;
+    border: 3px solid #0f172a;
+    box-shadow: 10px 10px 0px #1e40af;
+    border-radius: 12px;
+}
+
+.main-title {
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    font-size: 4rem;
+    color: #1d4ed8; /* Azul */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 0.95;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    margin-top: 12px;
+    color: #475569;
+    font-weight: 500;
+}
+
+.divider {
+    border: none;
+    border-top: 3px dashed #2563eb;
+    margin: 25px 0;
+}
+
+.about-section h2, .details-section h3 {
+    font-family: 'Impact', sans-serif;
+    font-size: 1.6rem;
+    background-color: #1e40af; /* Fondo azul */
+    color: white;
+    display: inline-block;
+    padding: 4px 12px;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.about-section p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #1e293b;
+}
+
+.details-section ul {
+    list-style-type: '⚡ ';
+    padding-left: 20px;
+    margin-top: 10px;
+    font-weight: 600;
+    line-height: 1.8;
+    color: #1e293b;
+}
+
+/* --- COLUMNA DERECHA: FOTOS POLAROID --- */
+.image-column {
+    flex: 0.8;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+}
+
+.img-wrapper {
+    background-color: #ffffff; /* El marco de la foto sigue siendo blanco */
+    padding: 12px 12px 35px 12px;
+    border: 3px solid #0f172a;
+    box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.4);
+    position: relative;
+    width: 85%;
+    max-width: 280px;
+    transition: transform 0.3s ease;
+}
+
+.img-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid #cbd5e1;
+}
+
+.photo-top {
+    transform: rotate(4deg);
+}
+
+.photo-bottom {
+    transform: rotate(-5deg);
+}
+
+.img-wrapper:hover {
+    transform: scale(1.08) rotate(0deg);
+    z-index: 10;
+}
+
+/* STICKERS */
+.sticker {
+    position: absolute;
+    font-family: 'Impact', sans-serif;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    color: white;
+    letter-spacing: 1px;
+}
+
+.tag-1 {
+    background-color: #ff3b30; /* Rojo vibrante */
+    top: -15px;
+    right: -15px;
+    transform: rotate(12deg);
+}
+
+.tag-2 {
+    background-color: #2563eb; /* Azul Eléctrico */
+    bottom: 8px;
+    left: -15px;
+    transform: rotate(-8deg);
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        padding: 15px;
+    }
+    .navbar {
+        padding: 10px 20px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    body {
+        padding-top: 140px;
+    }
 }
