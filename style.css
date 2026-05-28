@@ -1,0 +1,211 @@
+/* ==========================================
+   PALETA DE AZULES & ESTILO SCRAPBOOK
+   ========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace; /* Tipografía estilo máquina de escribir/zine */
+}
+
+body {
+    /* Tu fondo editable. Si no existe, usará un azul profundo de respaldo */
+    background: url('fondo.png') no-repeat center center fixed;
+    background-size: cover;
+    background-color: #0a192f; 
+    color: #ffffff;
+    min-height: 100vh;
+    padding-top: 80px; /* Espacio para que el menú no tape el contenido */
+}
+
+/* ==========================================
+   MENÚ SUPERIOR (NAVBAR)
+   ========================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(10, 25, 47, 0.9); /* Azul marino translúcido */
+    border-bottom: 3px dashed #64ffda; /* Línea discontinua estilo costura */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #00bcd4; /* Azul cyan brillante */
+    text-shadow: 2px 2px #004d40;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+}
+
+.navbar ul li {
+    margin-left: 20px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #8892b0; /* Azul grisáceo */
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    padding: 5px 10px;
+}
+
+.navbar ul li a:hover, .navbar ul li a.active {
+    color: #ffffff;
+    background-color: #1e3a8a; /* Azul mezclilla oscuro */
+    outline: 2px straight #00f0ff;
+    box-shadow: 3px 3px 0px #00f0ff;
+}
+
+/* ==========================================
+   ESTRUCTURA PRINCIPAL (LOBBY)
+   ========================================== */
+.main-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+/* --- COLUMNA IZQUIERDA (INFORMACIÓN) --- */
+.info-column {
+    flex: 1;
+    min-width: 320px;
+}
+
+/* Efecto de hoja de papel rota/recortada pegada encima */
+.paper-bento {
+    background-color: #f0f4f8; /* Blanco azulado muy claro */
+    color: #0f172a; /* Texto azul casi negro para contraste */
+    padding: 30px;
+    border: 2px solid #0f172a;
+    box-shadow: 8px 8px 0px rgba(30, 58, 138, 0.7); /* Sombra azul rígida */
+    transform: rotate(-1deg); /* Ligera inclinación estilo collage */
+}
+
+.main-title {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #1e40af; /* Azul fuerte */
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    color: #475569;
+    font-style: italic;
+}
+
+.divider {
+    border: none;
+    border-top: 3px dotted #1e40af;
+    margin: 20px 0;
+}
+
+.about-section h2, .details-section h3 {
+    background-color: #2563eb; /* Azul eléctrico */
+    color: white;
+    display: inline-block;
+    padding: 2px 8px;
+    margin-bottom: 12px;
+    transform: rotate(1deg);
+}
+
+.details-section ul {
+    list-style-type: '➢ ';
+    padding-left: 20px;
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+/* --- COLUMNA DERECHA (IMÁGENES) --- */
+.image-column {
+    flex: 1;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Contenedor de fotos tipo Polaroid / Recorte */
+.img-wrapper {
+    background-color: #ffffff;
+    padding: 15px 15px 40px 15px; /* Margen inferior ancho para simular polaroid */
+    border: 2px solid #0f172a;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+    position: relative;
+    max-width: 80%;
+    transition: transform 0.3s ease;
+}
+
+.img-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: contrast(1.1) brightness(0.9); /* Toque de filtro analógico */
+}
+
+/* Inclinaciones diferentes para simular pegado a mano */
+.photo-top {
+    transform: rotate(3deg);
+}
+
+.photo-bottom {
+    transform: rotate(-4deg);
+}
+
+.img-wrapper:hover {
+    transform: scale(1.05) rotate(0deg);
+    z-index: 10;
+}
+
+/* Stickers / Letreros encima de las fotos */
+.sticker {
+    position: absolute;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: 2px dashed white;
+}
+
+.tag-1 {
+    background-color: #3b82f6; /* Azul brillante */
+    top: -10px;
+    right: -10px;
+    transform: rotate(15deg);
+}
+
+.tag-2 {
+    background-color: #1d4ed8; /* Azul marino */
+    bottom: 10px;
+    left: -10px;
+    transform: rotate(-10deg);
+}
+
+/* Responsivo para celulares */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+    }
+    .navbar {
+        padding: 15px 20px;
+    }
+}
