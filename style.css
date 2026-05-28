@@ -1,47 +1,52 @@
 /* ==========================================
-   PALETA DE AZULES & ESTILO SCRAPBOOK
+   PALETA DE AZULES & ESTILO URBAN STREETWEAR
    ========================================== */
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Courier New', Courier, monospace; /* Tipografía estilo máquina de escribir/zine */
 }
 
 body {
-    /* Tu fondo editable. Si no existe, usará un azul profundo de respaldo */
     background: url('fondo.png') no-repeat center center fixed;
     background-size: cover;
     background-color: #0a192f; 
     color: #ffffff;
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Tipografía base limpia */
     min-height: 100vh;
-    padding-top: 80px; /* Espacio para que el menú no tape el contenido */
+    padding-top: 100px; 
 }
 
 /* ==========================================
-   MENÚ SUPERIOR (NAVBAR)
+   MENÚ SUPERIOR BLANCO (NAVBAR)
    ========================================== */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(10, 25, 47, 0.9); /* Azul marino translúcido */
-    border-bottom: 3px dashed #64ffda; /* Línea discontinua estilo costura */
+    background-color: rgba(255, 255, 255, 0.95); /* Fondo Blanco Sólido / Elegante */
+    border-bottom: 4px solid #1e40af; /* Línea azul fuerte abajo */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 40px;
+    padding: 12px 50px;
     z-index: 1000;
-    backdrop-filter: blur(5px);
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
 }
 
-.navbar .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #00bcd4; /* Azul cyan brillante */
-    text-shadow: 2px 2px #004d40;
+/* Contenedor del Logo ajustable */
+.logo-container {
+    display: flex;
+    align-items: center;
+    max-height: 50px;
+}
+
+.site-logo {
+    max-height: 45px; /* Altura máxima para que no rompa el menú */
+    width: auto;
+    object-fit: contain;
 }
 
 .navbar ul {
@@ -50,23 +55,26 @@ body {
 }
 
 .navbar ul li {
-    margin-left: 20px;
+    margin-left: 15px;
 }
 
 .navbar ul li a {
     text-decoration: none;
-    color: #8892b0; /* Azul grisáceo */
-    font-size: 1.1rem;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    padding: 5px 10px;
+    color: #1e293b; /* Texto oscuro para contrastar con el fondo blanco */
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+    padding: 8px 16px;
+    border-radius: 4px;
 }
 
+/* Efecto Hover y Activo en el menú */
 .navbar ul li a:hover, .navbar ul li a.active {
     color: #ffffff;
-    background-color: #1e3a8a; /* Azul mezclilla oscuro */
-    outline: 2px straight #00f0ff;
-    box-shadow: 3px 3px 0px #00f0ff;
+    background-color: #2563eb; /* Fondo azul eléctrico al pasar el mouse */
+    box-shadow: 3px 3px 0px #1d4ed8;
 }
 
 /* ==========================================
@@ -74,138 +82,160 @@ body {
    ========================================== */
 .main-container {
     display: flex;
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
-    padding: 20px;
-    gap: 40px;
+    padding: 30px;
+    gap: 50px;
+    align-items: center; /* Alinea los bloques verticalmente */
     flex-wrap: wrap;
 }
 
 /* --- COLUMNA IZQUIERDA (INFORMACIÓN) --- */
 .info-column {
-    flex: 1;
-    min-width: 320px;
+    flex: 1.2;
+    min-width: 350px;
 }
 
-/* Efecto de hoja de papel rota/recortada pegada encima */
 .paper-bento {
-    background-color: #f0f4f8; /* Blanco azulado muy claro */
-    color: #0f172a; /* Texto azul casi negro para contraste */
-    padding: 30px;
-    border: 2px solid #0f172a;
-    box-shadow: 8px 8px 0px rgba(30, 58, 138, 0.7); /* Sombra azul rígida */
-    transform: rotate(-1deg); /* Ligera inclinación estilo collage */
+    background-color: rgba(248, 250, 252, 0.95); /* Blanco ligeramente azulado, semi-opaco */
+    color: #0f172a; 
+    padding: 35px;
+    border: 3px solid #0f172a;
+    box-shadow: 10px 10px 0px #1e40af; /* Sombra azul sólido */
+    border-radius: 12px;
 }
 
 .main-title {
-    font-size: 3rem;
-    font-weight: 900;
-    color: #1e40af; /* Azul fuerte */
+    font-family: 'Impact', 'Arial Black', sans-serif; /* Tipografía imponente estilo revista */
+    font-size: 4rem;
+    color: #1d4ed8;
     text-transform: uppercase;
-    letter-spacing: -1px;
+    letter-spacing: 2px;
+    line-height: 0.95;
 }
 
 .subtitle {
     font-size: 1.1rem;
-    margin-top: 10px;
+    margin-top: 12px;
     color: #475569;
-    font-style: italic;
+    font-weight: 500;
 }
 
 .divider {
     border: none;
-    border-top: 3px dotted #1e40af;
-    margin: 20px 0;
+    border-top: 3px dashed #2563eb;
+    margin: 25px 0;
 }
 
 .about-section h2, .details-section h3 {
-    background-color: #2563eb; /* Azul eléctrico */
+    font-family: 'Impact', sans-serif;
+    font-size: 1.6rem;
+    background-color: #1e40af; /* Fondo azul fuerte para títulos internos */
     color: white;
     display: inline-block;
-    padding: 2px 8px;
-    margin-bottom: 12px;
-    transform: rotate(1deg);
+    padding: 4px 12px;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.about-section p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #1e293b;
 }
 
 .details-section ul {
-    list-style-type: '➢ ';
+    list-style-type: '⚡ ';
     padding-left: 20px;
     margin-top: 10px;
-    line-height: 1.6;
+    font-weight: 600;
+    line-height: 1.8;
+    color: #1e293b;
 }
 
 /* --- COLUMNA DERECHA (IMÁGENES) --- */
 .image-column {
-    flex: 1;
-    min-width: 320px;
+    flex: 0.8;
+    min-width: 300px;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 40px;
     align-items: center;
-    justify-content: center;
 }
 
-/* Contenedor de fotos tipo Polaroid / Recorte */
+/* Contenedor de fotos Polaroid mejorado */
 .img-wrapper {
     background-color: #ffffff;
-    padding: 15px 15px 40px 15px; /* Margen inferior ancho para simular polaroid */
-    border: 2px solid #0f172a;
-    box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+    padding: 12px 12px 35px 12px;
+    border: 3px solid #0f172a;
+    box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.4);
     position: relative;
-    max-width: 80%;
-    transition: transform 0.3s ease;
+    width: 85%;
+    max-width: 280px;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .img-wrapper img {
     width: 100%;
     height: auto;
     display: block;
-    filter: contrast(1.1) brightness(0.9); /* Toque de filtro analógico */
+    border: 1px solid #cbd5e1;
 }
 
-/* Inclinaciones diferentes para simular pegado a mano */
 .photo-top {
-    transform: rotate(3deg);
+    transform: rotate(4deg);
 }
 
 .photo-bottom {
-    transform: rotate(-4deg);
+    transform: rotate(-5deg);
 }
 
 .img-wrapper:hover {
-    transform: scale(1.05) rotate(0deg);
+    transform: scale(1.08) rotate(0deg);
     z-index: 10;
+    box-shadow: 12px 12px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* Stickers / Letreros encima de las fotos */
+/* Stickers / Tags */
 .sticker {
     position: absolute;
-    padding: 5px 10px;
+    font-family: 'Impact', sans-serif;
+    padding: 6px 12px;
     font-size: 0.9rem;
-    font-weight: bold;
-    border: 2px dashed white;
+    color: white;
+    letter-spacing: 1px;
+    box-shadow: 3px 3px 0px rgba(0,0,0,0.2);
 }
 
 .tag-1 {
-    background-color: #3b82f6; /* Azul brillante */
-    top: -10px;
-    right: -10px;
-    transform: rotate(15deg);
+    background-color: #ff3b30; /* Un toque rojo/naranja brillante resalta brutal sobre el azul */
+    top: -15px;
+    right: -15px;
+    transform: rotate(12deg);
 }
 
 .tag-2 {
-    background-color: #1d4ed8; /* Azul marino */
-    bottom: 10px;
-    left: -10px;
-    transform: rotate(-10deg);
+    background-color: #2563eb; /* Azul Eléctrico */
+    bottom: 8px;
+    left: -15px;
+    transform: rotate(-8deg);
 }
 
 /* Responsivo para celulares */
 @media (max-width: 768px) {
     .main-container {
         flex-direction: column;
+        padding: 15px;
     }
     .navbar {
-        padding: 15px 20px;
+        padding: 10px 20px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    body {
+        padding-top: 140px;
+    }
+    .main-title {
+        font-size: 3rem;
     }
 }
