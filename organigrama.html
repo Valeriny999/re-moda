@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReModa | Organigrama</title>
+    <style>
+        /* ==========================================================================
+           VARIABLES Y CONFIGURACIÓN GLOBAL
+           ========================================================================== */
+        :root {
+            --denim-indigo: #1a2a44;       /* Azul mezclilla oscuro */
+            --denim-washed: #4a6fa5;       /* Azul mezclilla lavado */
+            --denim-light: #d1d9e6;        /* Tono celeste claro */
+            --pure-white: #ffffff;         /* Blanco puro */
+            --soft-white: #f4f7f9;         /* Blanco suave */
+            --text-dark: #222222;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--pure-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding-top: 90px;
+        }
+
+        /* ==========================================================================
+           BARRA DE NAVEGACIÓN SUPERIOR (FIJA)
+           ========================================================================== */
+        .navbar {
+            width: 100%;
+            height: 90px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: var(--pure-white);
+            border-bottom: 2px solid var(--denim-light);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area img {
+            height: 60px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--denim-indigo);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            padding: 5px 0;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--denim-washed);
+            border-bottom: 2px solid var(--denim-washed);
+        }
+
+        /* ==========================================================================
+           SECCIÓN HERO (ENCABEZADO DE ORGANIGRAMA)
+           ========================================================================== */
+        .team-hero {
+            background: linear-gradient(135deg, var(--denim-indigo) 0%, var(--denim-washed) 100%);
+            color: var(--pure-white);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .team-hero h1 {
+            font-size: 3rem;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .team-hero p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* ==========================================================================
+           CONTENEDOR PRINCIPAL Y ANÁLISIS DE PUESTOS
+           ========================================================================== */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .intro-block {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .tag {
+            color: var(--denim-washed);
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .intro-block h2 {
+            font-size: 2.2rem;
+            color: var(--denim-indigo);
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            color: #444444;
+            max-width: 850px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Acordeón / Tarjetas de Análisis del Equipo */
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .role-card {
+            background-color: var(--soft-white);
+            padding: 30px;
+            border-radius: 8px;
+            border-top: 4px solid var(--denim-indigo);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.01);
+        }
+
+        .role-card.executive {
+            border-top-color: #a54a5f; /* Color distintivo para la Dirección */
+        }
+
+        .role-title {
+            font-size: 1.15rem;
+            color: var(--denim-indigo);
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .role-name {
+            font-size: 0.95rem;
+            color: var(--denim-washed);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .role-card p {
+            font-size: 0.95rem;
+            color: #555555;
+            text-align: justify;
+        }
+
+        /* ==========================================================================
+           CONTENEDOR DE LA IMAGEN (O.PNG)
+           ========================================================================== */
+        .chart-section {
+            background-color: var(--soft-white);
+            border-top: 1px solid var(--denim-light);
+            border-bottom: 1px solid var(--denim-light);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .chart-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: var(--pure-white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 15px 40px rgba(26, 42, 68, 0.08);
+        }
+
+        .chart-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+        }
+
+        /* ==========================================================================
+           FOOTER
+           ========================================================================== */
+        .main-footer {
+            background-color: var(--denim-indigo);
+            color: var(--pure-white);
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN SUPERIOR (FIJA) -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo-area">
+                <img src="logo.png" alt="ReModa Logo">
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Sobre nosotros</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="personalizacion.html">Personalización</a></li>
+                    <li><a href="moodboard.html">Moodboard</a></li>
+                    <li><a href="organigrama.html" class="active">Organigrama</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ENCABEZADO DE LA PÁGINA -->
+    <section class="team-hero">
+        <h1>Estructura Organizacional</h1>
+        <p>El equipo humano detrás de la moda circular</p>
+    </section>
+
+    <!-- ANÁLISIS CONCEPTUAL SUPERIOR -->
+    <main class="container">
+        <div class="intro-block">
+            <span class="tag">Talento Humano</span>
+            <h2>Nuestra Organización Interna</h2>
+            <p class="intro-text">
+                Para consolidar un modelo de negocio enfocado en la sustentabilidad textil, coordinamos esfuerzos a través de departamentos especializados. Cada integrante aporta su experiencia desde la recolección del insumo base hasta la entrega comercial del producto final.
+            </p>
+
+            <!-- Desglose de puestos basado en o.png -->
+            <div class="roles-grid">
+                
+                <div class="role-card executive">
+                    <h3 class="role-title">Directora General</h3>
+                    <span class="role-name">Destiny Valeria Rodríguez Santiago</span>
+                    <p>Lidera el rumbo estratégico de ReModa, coordinando todas las áreas operativas, impulsando la visión sostenible y supervisando la correcta toma de decisiones para el crecimiento de la marca.</p>
+                </div>
+
+                <div class="role-card">
+                    <h3 class="role-title">Gerente de Producción</h3>
+                    <span class="role-name">Victor Romo Baltazar</span>
+                    <p>Encargado de la planeación técnica del taller, optimizando el rendimiento de la materia prima y administrando los tiempos de ensamble para cumplir con las metas de volumen estipuladas.</p>
+                </div>
+
+                <div class="role-card">
+                    <h3 class="role-title">Supervisor de Calidad</h3>
+                    <span class="role-name">Eduardo Jesse Vargas Puente</span>
+                    <p>Garantiza que cada bolsa cumpla con los estándares premium de resistencia en costuras, acabados estéticos excelentes y funcionalidad impecable antes de su distribución.</p>
+                </div>
+
+                <div class="role-card">
+                    <h3 class="role-title">Costurera o Confeccionista</h3>
+                    <span class="role-name">Karla Maria Vicente Bautista</span>
+                    <p>El núcleo artesanal de la marca. Transforma las piezas de mezclilla recolectadas mediante cortes precisos y un ensamblado meticuloso, creando bolsas estables y de alta costura.</p>
+                </div>
+
+                <div class="role-card">
+                    <h3 class="role-title">Gerente de Ventas</h3>
+                    <span class="role-name">Victor Isai Sierra Martinez</span>
+                    <p>Diseña los canales de distribución, establece estrategias comerciales de precio y coordina la atención directa al cliente final para asegurar la salida constante del inventario.</p>
+                </div>
+
+                <div class="role-card">
+                    <h3 class="role-title">Encargado de Material Reciclado</h3>
+                    <span class="role-name">Erick Levi Urbano Charnicharth</span>
+                    <p>Lidera la cadena de suministro inicial, gestionando la recolección, selección rigurosa y correcto tratamiento higiénico de las prendas de mezclilla que serán reutilizadas.</p>
+                </div>
+
+                <div class="role-card">
+                    <h3 class="role-title">Community Manager</h3>
+                    <span class="role-name">Jordan Alexander Vázquez del Ángel</span>
+                    <p>Voz digital de ReModa. Gestiona la comunidad en redes sociales, atiende dudas de usuarios de forma directa y propicia la interacción constante con los clientes potenciales.</p>
+                </div>
+
+                <div class="role-card">
+                    <h3 class="role-title">Diseñadora de Bolsas</h3>
+                    <span class="role-name">Veronica Santiago Guerra</span>
+                    <p>Mente artística encargada de conceptualizar los patrones visuales (Patchwork, simetrías) y decidir cómo aprovechar creativamente cada textura de mezclilla disponible.</p>
+                </div>
+
+                <div class="role-card">
+                    <h3 class="role-title">Diseñador de Publicidad y Marketing</h3>
+                    <span class="role-name">Ángel Gabriel Rosas Morgado</span>
+                    <p>Crea las campañas gráficas, banners informativos e identidad visual de la empresa, proyectando un mensaje coherente que conecta con nuestro mercado objetivo.</p>
+                </div>
+
+                <div class="role-card">
+                    <h3 class="role-title">Encargado de Finanzas y Administración</h3>
+                    <span class="role-name">Diego Santes Olmedo</span>
+                    <p>Controla los flujos de dinero de la compañía, gestionando el presupuesto operativo, analizando costos de manufactura y garantizando la viabilidad económica del proyecto.</p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- SECCIÓN DE DESPLIEGUE DEL DIAGRAMA GRÁFICO (O.PNG) -->
+    <section class="chart-section">
+        <div class="chart-wrapper">
+            <!-- Llamado exacto del archivo o.png tal como lo pediste -->
+            <img src="o.png" alt="Organigrama Estructural ReModa">
+        </div>
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="main-footer">
+        <p>&copy; 2026 ReModa — Calidad increíble en cada costura.</p>
+    </footer>
+
+</body>
+</html>
