@@ -4,63 +4,305 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReModa | Inicio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        /* ==========================================================================
+           VARIABLES Y CONFIGURACIÓN GLOBAL
+           ========================================================================== */
+        :root {
+            --denim-indigo: #1a2a44;       /* Azul mezclilla oscuro */
+            --denim-washed: #4a6fa5;       /* Azul mezclilla lavado */
+            --denim-light: #d1d9e6;        /* Tono celeste claro */
+            --pure-white: #ffffff;         /* Blanco puro */
+            --soft-white: #f4f7f9;         /* Blanco suave */
+            --text-dark: #222222;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--pure-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding-top: 90px; /* Espacio para que la navbar fija no tape el contenido */
+        }
+
+        /* ==========================================================================
+           BARRA DE NAVEGACIÓN SUPERIOR (FIXED)
+           ========================================================================== */
+        .navbar {
+            width: 100%;
+            height: 90px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: var(--pure-white);
+            border-bottom: 2px solid var(--denim-light);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* CONTROL DEL LOGOTIPO PARA QUE NO SE VEA GIGANTE */
+        .logo-area img {
+            height: 60px; /* Tamaño controlado y estético */
+            width: auto;
+            display: block;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--denim-indigo);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            padding: 5px 0;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--denim-washed);
+            border-bottom: 2px solid var(--denim-washed);
+        }
+
+        /* ==========================================================================
+           SECCIÓN HERO (BIENVENIDA)
+           ========================================================================== */
+        .hero {
+            background: linear-gradient(135deg, var(--denim-indigo) 0%, var(--denim-washed) 100%);
+            color: var(--pure-white);
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        .hero-line {
+            width: 80px;
+            height: 4px;
+            background-color: var(--pure-white);
+            margin: 20px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* ==========================================================================
+           CONTENEDORES Y SECCIONES DE INFORMACIÓN
+           ========================================================================== */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .tag {
+            color: var(--denim-washed);
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--denim-indigo);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .description-text {
+            font-size: 1.1rem;
+            color: #444444;
+        }
+
+        /* CUADRO ESTÉTICO DE TEXTURA DE MEZCLILLA */
+        .denim-texture-box {
+            width: 100%;
+            height: 300px;
+            background-color: var(--soft-white);
+            border: 3px dashed var(--denim-washed);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--denim-washed);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        /* ==========================================================================
+           SECCIÓN MERCADO OBJETIVO
+           ========================================================================== */
+        .target-section {
+            background-color: var(--soft-white);
+            border-top: 1px solid var(--denim-light);
+            border-bottom: 1px solid var(--denim-light);
+            text-align: center;
+        }
+
+        .target-box {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .target-desc {
+            font-size: 1.2rem;
+            color: #333333;
+            margin-bottom: 30px;
+        }
+
+        .target-tags {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .target-tags span {
+            background-color: var(--pure-white);
+            border: 2px solid var(--denim-washed);
+            color: var(--denim-indigo);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .target-tags span:hover {
+            background-color: var(--denim-indigo);
+            color: var(--pure-white);
+            transform: scale(1.05);
+        }
+
+        /* ==========================================================================
+           FOOTER (PIE DE PÁGINA)
+           ========================================================================== */
+        .main-footer {
+            background-color: var(--denim-indigo);
+            color: var(--pure-white);
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* ==========================================================================
+           ANIMACIONES ANIMADAS POR CSS
+           ========================================================================== */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- NAVBAR PROFESIONAL -->
+    <!-- BARRA DE NAVEGACIÓN SUPERIOR (FIJA) -->
     <header class="navbar">
         <div class="nav-container">
-            <img src="logo.png" alt="ReModa Logo" class="logo">
+            <!-- El logotipo se mantendrá en su esquina sin romper el menú -->
+            <div class="logo-area">
+                <img src="logo.png" alt="ReModa Logo">
+            </div>
+            <!-- Menú de navegación plano y estilizado -->
             <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html" class="active">Inicio</a></li>
-                    <li><a href="nosotros.html">Sobre Nosotros</a></li>
-                    <li><a href="personalizacion.html">Personalización</a></li>
-                    <li><a href="moodboard.html">Moodboard</a></li>
-                    <li><a href="organigrama.html">Organigrama</a></li>
+                <ul class="nav-menu">
+                    <li><a href="#" class="active">Inicio</a></li>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="#">Personalización</a></li>
+                    <li><a href="#">Moodboard</a></li>
+                    <li><a href="#">Organigrama</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- HERO SECTION: IMPACTO VISUAL -->
+    <!-- SECCIÓN DE BIENVENIDA (HERO) -->
     <section class="hero">
-        <div class="hero-overlay">
-            <div class="hero-content">
-                <h1 class="reveal-text">RE<span>MODA</span></h1>
-                <p>Estética consciente, calidad innegable.</p>
-                <div class="hero-line"></div>
-            </div>
-        </div>
+        <h1>REMODA</h1>
+        <p>Estética increíble • Calidad insuperable</p>
+        <div class="hero-line"></div>
     </section>
 
-    <!-- DESCRIPCIÓN DEL NEGOCIO -->
-    <section class="intro-section">
-        <div class="container">
-            <div class="info-grid">
-                <div class="info-card animate-up">
-                    <span class="tag">Nuestra Esencia</span>
-                    <h2>Moda que respira de nuevo</h2>
-                    <p>En <strong>ReModa</strong>, no solo hacemos bolsas; rescatamos historias. Elaboramos cada pieza a partir de mezclilla reutilizada, manteniendo un estándar de calidad increíble para ofrecerte productos útiles, modernos y, sobre todo, ecológicos.</p>
-                </div>
-                <div class="info-image">
-                    <!-- Aquí podrías poner una imagen de textura de mezclilla de alta calidad -->
-                    <div class="denim-texture-box"></div>
+    <!-- SECCIÓN DESCRIPCIÓN DEL NEGOCIO -->
+    <section class="container">
+        <div class="section-grid">
+            <div>
+                <span class="tag">Nuestra Esencia</span>
+                <h2>Moda sustentable con estilo premium</h2>
+                <p class="description-text">
+                    <strong>ReModa</strong> es una empresa dedicada a la elaboración y venta de bolsas hechas con tela reciclada, principalmente mezclilla reutilizada. Nuestro objetivo es ofrecer productos útiles, modernos y ecológicos que ayuden a reducir la contaminación y fomentar el reciclaje, todo bajo un estándar estético impecable.
+                </p>
+            </div>
+            <div>
+                <!-- Caja visual que simula acabados premium de costura -->
+                <div class="denim-texture-box">
+                    Mezclilla Reutilizada Alta Calidad
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- MERCADO OBJETIVO: ENFOQUE ESTÉTICO -->
+    <!-- SECCIÓN MERCADO OBJETIVO -->
     <section class="target-section">
         <div class="container">
-            <div class="target-content">
-                <h2 class="section-title">Para quienes cuidan el mañana</h2>
+            <div class="target-box">
+                <span class="tag">¿Para quiénes diseñamos?</span>
+                <h2>Nuestro Mercado Objetivo</h2>
                 <p class="target-desc">
-                    Nuestro mercado se define por jóvenes y adultos que no comprometen el estilo por la ética. 
-                    Si buscas moda sustentable y te apasiona el cuidado del medio ambiente, ReModa es tu espacio.
+                    Nos dirigimos principalmente a jóvenes y adultos que buscan productos ecológicos, modernos y reutilizables. Nos enfocamos en personas interesadas activamente en la moda sustentable y en el cuidado del medio ambiente.
                 </p>
                 <div class="target-tags">
                     <span>Ecológico</span>
@@ -71,8 +313,9 @@
         </div>
     </section>
 
-    <footer class="simple-footer">
-        <p>&copy; 2026 ReModa - Calidad en cada fibra.</p>
+    <!-- PIE DE PÁGINA -->
+    <footer class="main-footer">
+        <p>&copy; 2026 ReModa — Calidad increíble en cada costura.</p>
     </footer>
 
 </body>
