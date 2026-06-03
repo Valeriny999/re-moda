@@ -85,10 +85,9 @@
         }
 
         /* ==========================================================================
-           SECCIÓN HERO (BANNER CON IMAGEN)
+           SECCIÓN HERO (BANNER CON IMAGEN BANNER.PNG)
            ========================================================================== */
         .hero {
-            /* Ahora utiliza tu imagen banner.png en lugar del fondo azul sólido */
             background: url('banner.png') center/cover no-repeat;
             height: 450px;
             color: var(--pure-white);
@@ -100,7 +99,7 @@
             position: relative;
         }
 
-        /* Capa oscura sutil para asegurar que el texto blanco sea legible sobre tu banner */
+        /* Capa oscura sutil para asegurar legibilidad del texto */
         .hero-overlay {
             position: absolute;
             top: 0;
@@ -179,7 +178,7 @@
             margin-bottom: 15px;
         }
 
-        /* IMAGEN DE TEXTURA MEZ.PNG CORREGIDA */
+        /* IMAGEN DE TEXTURA MEZ.PNG */
         .denim-image-box img {
             width: 100%;
             height: 350px;
@@ -223,6 +222,7 @@
         .mv-card p {
             color: #555555;
             font-size: 1.05rem;
+            line-height: 1.7;
         }
 
         /* ==========================================================================
@@ -276,14 +276,16 @@
 </head>
 <body>
 
+    <!-- BARRA DE NAVEGACIÓN SUPERIOR (FIJA) -->
     <header class="navbar">
         <div class="nav-container">
             <div class="logo-area">
                 <img src="logo.png" alt="ReModa Logo">
             </div>
             <nav>
+                <!-- Menú corregido: Apunta a index.html como página actual activa -->
                 <ul class="nav-menu">
-                    <li><a href="sobrenosotros.html" class="active">Sobre nosotros</a></li>
+                    <li><a href="index.html" class="active">Sobre nosotros</a></li>
                     <li><a href="catalogo.html">Catálogo</a></li>
                     <li><a href="personalizacion.html">Personalización</a></li>
                     <li><a href="moodboard.html">Moodboard</a></li>
@@ -293,6 +295,7 @@
         </div>
     </header>
 
+    <!-- SECCIÓN DE BIENVENIDA (HERO CON BANNER.PNG) -->
     <section class="hero">
         <div class="hero-overlay"></div>
         <h1>REMODA</h1>
@@ -300,6 +303,7 @@
         <div class="hero-line"></div>
     </section>
 
+    <!-- SECCIÓN DESCRIPCIÓN DEL NEGOCIO -->
     <section class="container">
         <div class="section-grid">
             <div>
@@ -313,6 +317,7 @@
                 </p>
             </div>
             <div>
+                <!-- Muestra directamente tu imagen de textura mez.png -->
                 <div class="denim-image-box">
                     <img src="mez.png" alt="Textura de Mezclilla ReModa">
                 </div>
@@ -320,6 +325,7 @@
         </div>
     </section>
 
+    <!-- SECCIÓN: MISIÓN Y VISIÓN -->
     <section class="mv-section">
         <div class="container">
             <div class="mv-grid">
@@ -335,6 +341,7 @@
         </div>
     </section>
 
+    <!-- SECCIÓN MERCADO OBJETIVO -->
     <section class="container target-section">
         <div class="target-box">
             <span class="tag">¿Para quiénes diseñamos?</span>
@@ -350,6 +357,7 @@
         </div>
     </section>
 
+    <!-- PIE DE PÁGINA -->
     <footer class="main-footer">
         <p>&copy; 2026 ReModa — Calidad increíble en cada costura.</p>
     </footer>
