@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReModa | Moodboard</title>
+    <style>
+        /* ==========================================================================
+           VARIABLES Y CONFIGURACIÓN GLOBAL
+           ========================================================================= */
+        :root {
+            --denim-indigo: #1a2a44;       /* Azul mezclilla oscuro */
+            --denim-washed: #4a6fa5;       /* Azul mezclilla lavado */
+            --denim-light: #d1d9e6;        /* Tono celeste claro */
+            --pure-white: #ffffff;         /* Blanco puro */
+            --soft-white: #f4f7f9;         /* Blanco suave */
+            --text-dark: #222222;
+            --pink-accent: #f3a0b3;        /* Rosa suave inspirado en tu paleta */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--pure-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding-top: 90px;
+        }
+
+        /* ==========================================================================
+           BARRA DE NAVEGACIÓN SUPERIOR (FIJA)
+           ========================================================================== */
+        .navbar {
+            width: 100%;
+            height: 90px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: var(--pure-white);
+            border-bottom: 2px solid var(--denim-light);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area img {
+            height: 60px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--denim-indigo);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            padding: 5px 0;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--denim-washed);
+            border-bottom: 2px solid var(--denim-washed);
+        }
+
+        /* ==========================================================================
+           SECCIÓN HERO (ENCABEZADO DE MOODBOARD)
+           ========================================================================== */
+        .moodboard-hero {
+            background: linear-gradient(135deg, var(--denim-indigo) 0%, var(--denim-washed) 100%);
+            color: var(--pure-white);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .moodboard-hero h1 {
+            font-size: 3rem;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .moodboard-hero p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* ==========================================================================
+           CONTENEDOR PRINCIPAL Y DESCRIPCIÓN CONCEPTUAL
+           ========================================================================== */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .concept-block {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .tag {
+            color: var(--denim-washed);
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .concept-block h2 {
+            font-size: 2.2rem;
+            color: var(--denim-indigo);
+            margin-bottom: 20px;
+        }
+
+        .concept-text {
+            font-size: 1.1rem;
+            color: #444444;
+            max-width: 850px;
+            margin: 0 auto 40px auto;
+            line-height: 1.8;
+        }
+
+        /* Cuadrícula interna de los pilares del moodboard */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .pillar-card {
+            background-color: var(--soft-white);
+            padding: 25px;
+            border-radius: 6px;
+            border-bottom: 3px solid var(--denim-light);
+            transition: transform 0.3s;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-3px);
+            border-bottom-color: var(--pink-accent);
+        }
+
+        .pillar-card h3 {
+            font-size: 1.1rem;
+            color: var(--denim-indigo);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .pillar-card p {
+            font-size: 0.95rem;
+            color: #555555;
+        }
+
+        /* ==========================================================================
+           CONTENEDOR DE LA IMAGEN EN GRANDE (M.PNG)
+           ========================================================================== */
+        .image-display-section {
+            background-color: var(--soft-white);
+            border-top: 1px solid var(--denim-light);
+            border-bottom: 1px solid var(--denim-light);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .moodboard-wrapper {
+            max-width: 1050px;
+            margin: 0 auto;
+            background-color: var(--pure-white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 15px 40px rgba(26, 42, 68, 0.08);
+        }
+
+        .moodboard-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+        }
+
+        .caption-text {
+            font-size: 0.9rem;
+            color: #777777;
+            margin-top: 15px;
+            font-style: italic;
+            letter-spacing: 0.5px;
+        }
+
+        /* ==========================================================================
+           FOOTER
+           ========================================================================== */
+        .main-footer {
+            background-color: var(--denim-indigo);
+            color: var(--pure-white);
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN SUPERIOR (FIJA) -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo-area">
+                <img src="logo.png" alt="ReModa Logo">
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Sobre nosotros</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="personalizacion.html">Personalización</a></li>
+                    <li><a href="moodboard.html" class="active">Moodboard</a></li>
+                    <li><a href="organigrama.html">Organigrama</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ENCABEZADO DEL MOODBOARD -->
+    <section class="moodboard-hero">
+        <h1>Universo Visual</h1>
+        <p>Inspiración, texturas y el origen de nuestra identidad</p>
+    </section>
+
+    <!-- SECCIÓN DESCRIPCIÓN DEL CONCEPTO -->
+    <main class="container">
+        <div class="concept-block">
+            <span class="tag">ADN de Marca</span>
+            <h2>¿Qué representa nuestro Moodboard?</h2>
+            <p class="concept-text">
+                Nuestro tablero de inspiración plasma la fusión perfecta entre la cultura urbana del reciclaje y una estética limpia, versátil y con alta personalidad. Define la dirección creativa de <strong>ReModa</strong>, donde la mezclilla deja de ser un desperdicio para transformarse en piezas únicas que te acompañan en tu día a día.
+            </p>
+
+            <!-- Columnas descriptivas basadas fielmente en image_a449c1.png -->
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <h3>Inspiración</h3>
+                    <p>Lo cotidiano, lo simple y lo auténtico. La belleza de lo que nos identifica en entornos urbanos.</p>
+                </div>
+                <div class="pillar-card">
+                    <h3>Elementos</h3>
+                    <p>Texturas de mezclilla pura, costuras reforzadas, parches y accesorios metálicos de alta calidad.</p>
+                </div>
+                <div class="pillar-card">
+                    <h3>Estilo</h3>
+                    <p>Un enfoque casual, urbano y dinámico diseñado para adaptarse de forma versátil a tu estilo de vida.</p>
+                </div>
+                <div class="pillar-card">
+                    <h3>Color</h3>
+                    <p>Una base sólida de azules denim complementada con la suavidad del rosa pastel y grises neutros.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SECCIÓN DE DESPLIEGUE AMPLIO PARA LA IMAGEN (M.PNG) -->
+    <section class="image-display-section">
+        <div class="moodboard-wrapper">
+            <!-- Carga el archivo m.png tal como lo solicitaste -->
+            <img src="m.png" alt="Moodboard ReModa - Estilo que te acompaña">
+            <p class="caption-text">— ReModa: Estilo que te acompaña. Bolsas de mezclilla hechas para ti. —</p>
+        </div>
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="main-footer">
+        <p>&copy; 2026 ReModa — Calidad increíble en cada costura.</p>
+    </footer>
+
+</body>
+</html>
