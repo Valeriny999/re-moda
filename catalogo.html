@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReModa | Catálogo</title>
+    <style>
+        /* ==========================================================================
+           VARIABLES Y CONFIGURACIÓN GLOBAL
+           ========================================================================== */
+        :root {
+            --denim-indigo: #1a2a44;       /* Azul mezclilla oscuro */
+            --denim-washed: #4a6fa5;       /* Azul mezclilla lavado */
+            --denim-light: #d1d9e6;        /* Tono celeste claro */
+            --pure-white: #ffffff;         /* Blanco puro */
+            --soft-white: #f4f7f9;         /* Blanco suave */
+            --text-dark: #222222;
+            --star-color: #ffc107;         /* Dorado para reseñas */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--pure-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding-top: 90px;
+        }
+
+        /* ==========================================================================
+           BARRA DE NAVEGACIÓN SUPERIOR (FIJA)
+           ========================================================================== */
+        .navbar {
+            width: 100%;
+            height: 90px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: var(--pure-white);
+            border-bottom: 2px solid var(--denim-light);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area img {
+            height: 60px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--denim-indigo);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            padding: 5px 0;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--denim-washed);
+            border-bottom: 2px solid var(--denim-washed);
+        }
+
+        /* ==========================================================================
+           SECCIÓN HERO (ENCABEZADO DE CATÁLOGO)
+           ========================================================================== */
+        .catalog-hero {
+            background: linear-gradient(135deg, var(--denim-indigo) 0%, var(--denim-washed) 100%);
+            color: var(--pure-white);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .catalog-hero h1 {
+            font-size: 3rem;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .catalog-hero p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* ==========================================================================
+           CUADRÍCULA DE PRODUCTOS (CATÁLOGO)
+           ========================================================================== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            background-color: var(--pure-white);
+            border: 1px solid var(--denim-light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(26, 42, 68, 0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+            background-color: var(--soft-white);
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            color: var(--denim-indigo);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .product-desc {
+            font-size: 0.95rem;
+            color: #555555;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--soft-white);
+            padding-top: 15px;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            color: var(--denim-indigo);
+            font-weight: 700;
+        }
+
+        .btn-buy {
+            background-color: var(--denim-washed);
+            color: var(--pure-white);
+            padding: 8px 18px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-buy:hover {
+            background-color: var(--denim-indigo);
+        }
+
+        /* ==========================================================================
+           SECCIÓN DE RESEÑAS / COMENTARIOS
+           ========================================================================== */
+        .reviews-section {
+            background-color: var(--soft-white);
+            border-top: 1px solid var(--denim-light);
+            padding: 80px 20px;
+        }
+
+        .reviews-header {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .reviews-header h2 {
+            font-size: 2.2rem;
+            color: var(--denim-indigo);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .reviews-header p {
+            color: var(--denim-washed);
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background-color: var(--pure-white);
+            padding: 30px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border-left: 4px solid var(--denim-washed);
+        }
+
+        .review-stars {
+            color: var(--star-color);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .review-text {
+            font-style: italic;
+            color: #444444;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .review-author {
+            font-weight: 700;
+            color: var(--denim-indigo);
+            font-size: 0.9rem;
+            text-transform: capitalize;
+        }
+
+        /* ==========================================================================
+           FOOTER
+           ========================================================================== */
+        .main-footer {
+            background-color: var(--denim-indigo);
+            color: var(--pure-white);
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN SUPERIOR (FIJA) -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo-area">
+                <img src="logo.png" alt="ReModa Logo">
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Sobre nosotros</a></li>
+                    <li><a href="catalogo.html" class="active">Catálogo</a></li>
+                    <li><a href="personalizacion.html">Personalización</a></li>
+                    <li><a href="moodboard.html">Moodboard</a></li>
+                    <li><a href="organigrama.html">Organigrama</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ENCABEZADO DEL CATÁLOGO -->
+    <section class="catalog-hero">
+        <h1>Nuestra Colección</h1>
+        <p>Modelos únicos con historia y diseño consciente</p>
+    </section>
+
+    <!-- SECCIÓN DE PRODUCTOS -->
+    <main class="container">
+        <div class="product-grid">
+            
+            <!-- MODELO 1 -->
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="bolsa1.png" alt="Bolsa ReModa Mosaico">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Tote Mosaico</h2>
+                    <p class="product-desc">Diseño estructurado en base a parches rectangulares simétricos. Combina tonos azul lavado y mezclilla profunda, ideal para un look casual y ordenado.</p>
+                    <div class="product-meta">
+                        <span class="product-price">$80.00</span>
+                        <a href="#" class="btn-buy">Ver Detalle</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- MODELO 2 -->
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="bolsa2.png" alt="Bolsa ReModa Asimétrica">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Patchwork Asimétrico</h2>
+                    <p class="product-desc">Una propuesta dinámica compuesta por retazos de mezclilla en ángulos variados con sutiles detalles deshilachados que le dan un carácter artesanal y urbano único.</p>
+                    <div class="product-meta">
+                        <span class="product-price">$80.00</span>
+                        <a href="#" class="btn-buy">Ver Detalle</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- MODELO 3 -->
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="bolsa3.png" alt="Bolsa ReModa Urban Pocket">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Urban Pocket</h2>
+                    <p class="product-desc">Destaca por integrar de manera frontal bolsillos traseros originales de pantalones de mezclilla oscura. Funcionalidad premium con excelente espacio de almacenamiento rápido.</p>
+                    <div class="product-meta">
+                        <span class="product-price">$80.00</span>
+                        <a href="#" class="btn-buy">Ver Detalle</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- MODELO 4 -->
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="bolsa4.png" alt="Bolsa ReModa Denim Classic">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Vintage Label</h2>
+                    <p class="product-desc">Un diseño con mucha personalidad que aprovecha las pretinas, costuras de cinturón y etiquetas de cuero originales en la parte superior, rematado con un bolsillo de contraste oscuro.</p>
+                    <div class="product-meta">
+                        <span class="product-price">$80.00</span>
+                        <a href="#" class="btn-buy">Ver Detalle</a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- SECCIÓN DE COMENTARIOS / RESEÑAS POSITIVAS -->
+    <section class="reviews-section">
+        <div class="reviews-header">
+            <h2>Opiniones de Clientes</h2>
+            <p>Lo que dicen quienes ya visten ReModa</p>
+        </div>
+        <div class="reviews-grid">
+            
+            <!-- RESEÑA 1 -->
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Me sorprendió muchísimo la calidad de las costuras, es súper resistente. La uso todos los días para la escuela y le cabe perfectamente todo."</p>
+                <p class="review-author">— Valeria M.</p>
+            </div>
+
+            <!-- RESEÑA 2 -->
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"El diseño Patchwork es hermoso, se nota que cada pieza es única. Me encanta la idea de apoyar un proyecto ecológico que mantenga tan buena estética."</p>
+                <p class="review-author">— Carlos T.</p>
+            </div>
+
+            <!-- RESEÑA 3 -->
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Por 80 pesos la calidad es increíble, superó por completo mis expectativas. Los detalles de los bolsillos frontales son súper útiles."</p>
+                <p class="review-author">— Andrea R.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="main-footer">
+        <p>&copy; 2026 ReModa — Calidad increíble en cada costura.</p>
+    </footer>
+
+</body>
+</html>
