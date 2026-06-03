@@ -203,6 +203,8 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             transition: background-color 0.3s;
+            cursor: pointer;
+            border: none;
         }
 
         .btn-buy:hover {
@@ -210,7 +212,130 @@
         }
 
         /* ==========================================================================
-           SECCIÓN DE RESEÑAS / COMENTARIOS
+           VENTANA MODAL (VISTA DETALLADA EN GRANDE)
+           ========================================================================== */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(26, 42, 68, 0.7); /* Fondo traslúcido denim oscuro */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background-color: var(--pure-white);
+            width: 100%;
+            max-width: 800px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: var(--denim-indigo);
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 10;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover {
+            color: var(--denim-washed);
+        }
+
+        .modal-img-box {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            background-color: var(--soft-white);
+        }
+
+        .modal-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .modal-details {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .modal-tag {
+            color: var(--denim-washed);
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            color: var(--denim-indigo);
+            margin-bottom: 15px;
+        }
+
+        .modal-text {
+            color: #555555;
+            font-size: 1rem;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .modal-price {
+            font-size: 1.8rem;
+            color: var(--denim-indigo);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        /* Responsivo para el modal */
+        @media (max-width: 768px) {
+            .modal-content {
+                grid-template-columns: 1fr;
+            }
+            .modal-img-box {
+                min-height: 250px;
+                height: 250px;
+            }
+            .modal-details {
+                padding: 25px;
+            }
+        }
+
+        /* ==========================================================================
+           SECCIÓN DE ESTADÍSTICA Y COMENTARIOS
            ========================================================================== */
         .reviews-section {
             background-color: var(--soft-white);
@@ -220,7 +345,8 @@
 
         .reviews-header {
             text-align: center;
-            margin-bottom: 5px;
+            max-width: 600px;
+            margin: 0 auto 50px auto;
         }
 
         .reviews-header h2 {
@@ -231,10 +357,30 @@
             margin-bottom: 10px;
         }
 
-        .reviews-header p {
+        /* Métrica de satisfacción */
+        .stat-box {
+            background-color: var(--pure-white);
+            border: 1px solid var(--denim-light);
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.01);
+        }
+
+        .stat-percentage {
+            font-size: 1.8rem;
+            font-weight: 800;
             color: var(--denim-washed);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             font-weight: 600;
-            margin-bottom: 40px;
         }
 
         .reviews-grid {
@@ -319,14 +465,14 @@
             <!-- MODELO 1 -->
             <article class="product-card">
                 <div class="product-image">
-                    <img src="bolsa1.png" alt="Bolsa ReModa Mosaico">
+                    <img src="b1.png" alt="Bolsa ReModa Mosaico">
                 </div>
                 <div class="product-info">
                     <h2 class="product-title">Tote Mosaico</h2>
                     <p class="product-desc">Diseño estructurado en base a parches rectangulares simétricos. Combina tonos azul lavado y mezclilla profunda, ideal para un look casual y ordenado.</p>
                     <div class="product-meta">
                         <span class="product-price">$80.00</span>
-                        <a href="#" class="btn-buy">Ver Detalle</a>
+                        <button class="btn-buy" onclick="openModal('b1.png', 'Tote Mosaico', 'Diseño estructurado en base a parches rectangulares simétricos. Combina tonos azul lavado y mezclilla profunda, ideal para un look casual y ordenado.')">Ver Detalle</button>
                     </div>
                 </div>
             </article>
@@ -334,14 +480,14 @@
             <!-- MODELO 2 -->
             <article class="product-card">
                 <div class="product-image">
-                    <img src="bolsa2.png" alt="Bolsa ReModa Asimétrica">
+                    <img src="b2.png" alt="Bolsa ReModa Asimétrica">
                 </div>
                 <div class="product-info">
                     <h2 class="product-title">Patchwork Asimétrico</h2>
                     <p class="product-desc">Una propuesta dinámica compuesta por retazos de mezclilla en ángulos variados con sutiles detalles deshilachados que le dan un carácter artesanal y urbano único.</p>
                     <div class="product-meta">
                         <span class="product-price">$80.00</span>
-                        <a href="#" class="btn-buy">Ver Detalle</a>
+                        <button class="btn-buy" onclick="openModal('b2.png', 'Patchwork Asimétrico', 'Una propuesta dinámica compuesta por retazos de mezclilla en ángulos variados con sutiles detalles deshilachados que le dan un carácter artesanal y urbano único.')">Ver Detalle</button>
                     </div>
                 </div>
             </article>
@@ -349,14 +495,14 @@
             <!-- MODELO 3 -->
             <article class="product-card">
                 <div class="product-image">
-                    <img src="bolsa3.png" alt="Bolsa ReModa Urban Pocket">
+                    <img src="b3.png" alt="Bolsa ReModa Urban Pocket">
                 </div>
                 <div class="product-info">
                     <h2 class="product-title">Urban Pocket</h2>
                     <p class="product-desc">Destaca por integrar de manera frontal bolsillos traseros originales de pantalones de mezclilla oscura. Funcionalidad premium con excelente espacio de almacenamiento rápido.</p>
                     <div class="product-meta">
                         <span class="product-price">$80.00</span>
-                        <a href="#" class="btn-buy">Ver Detalle</a>
+                        <button class="btn-buy" onclick="openModal('b3.png', 'Urban Pocket', 'Destaca por integrar de manera frontal bolsillos traseros originales de pantalones de mezclilla oscura. Funcionalidad premium con excelente espacio de almacenamiento rápido.')">Ver Detalle</button>
                     </div>
                 </div>
             </article>
@@ -364,14 +510,14 @@
             <!-- MODELO 4 -->
             <article class="product-card">
                 <div class="product-image">
-                    <img src="bolsa4.png" alt="Bolsa ReModa Denim Classic">
+                    <img src="b4.png" alt="Bolsa ReModa Vintage Label">
                 </div>
                 <div class="product-info">
                     <h2 class="product-title">Vintage Label</h2>
                     <p class="product-desc">Un diseño con mucha personalidad que aprovecha las pretinas, costuras de cinturón y etiquetas de cuero originales en la parte superior, rematado con un bolsillo de contraste oscuro.</p>
                     <div class="product-meta">
                         <span class="product-price">$80.00</span>
-                        <a href="#" class="btn-buy">Ver Detalle</a>
+                        <button class="btn-buy" onclick="openModal('b4.png', 'Vintage Label', 'Un diseño con mucha personalidad que aprovecha las pretinas, costuras de cinturón y etiquetas de cuero originales en la parte superior, rematado con un bolsillo de contraste oscuro.')">Ver Detalle</button>
                     </div>
                 </div>
             </article>
@@ -379,14 +525,36 @@
         </div>
     </main>
 
+    <!-- VENTANA MODAL (OCULTA POR DEFECTO) -->
+    <div id="productModal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="modal-close" onclick="closeModal(null)">&times;</span>
+            <div class="modal-img-box">
+                <img id="modalImage" src="" alt="Producto Ampliado">
+            </div>
+            <div class="modal-details">
+                <span class="modal-tag">Modelo Exclusivo</span>
+                <h2 id="modalTitle" class="modal-title">Título de la Bolsa</h2>
+                <p id="modalDescription" class="modal-text">Descripción larga del producto aquí...</p>
+                <span class="modal-price">$80.00</span>
+            </div>
+        </div>
+    </div>
+
     <!-- SECCIÓN DE COMENTARIOS / RESEÑAS POSITIVAS -->
     <section class="reviews-section">
         <div class="reviews-header">
             <h2>Opiniones de Clientes</h2>
             <p>Lo que dicen quienes ya visten ReModa</p>
-        </div>
-        <div class="reviews-grid">
             
+            <!-- Estadística de clientes satisfechos -->
+            <div class="stat-box">
+                <span class="stat-percentage">98.4%</span>
+                <span class="stat-label">Clientes Altamente Satisfechos</span>
+            </div>
+        </div>
+
+        <div class="reviews-grid">
             <!-- RESEÑA 1 -->
             <div class="review-card">
                 <div class="review-stars">★★★★★</div>
@@ -408,6 +576,20 @@
                 <p class="review-author">— Andrea R.</p>
             </div>
 
+            <!-- RESEÑA 4 -->
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Compré la Urban Pocket y es sumamente práctica. Los bolsillos externos salvan vidas para guardar las llaves y el cel rápidamente."</p>
+                <p class="review-author">— Fernando J.</p>
+            </div>
+
+            <!-- RESEÑA 5 -->
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Es la segunda que compro, una para mí y otra para regalar. El envío fue rápido y el concepto de reciclar mezclilla me fascina."</p>
+                <p class="review-author">— Mariana G.</p>
+            </div>
+
         </div>
     </section>
 
@@ -415,6 +597,22 @@
     <footer class="main-footer">
         <p>&copy; 2026 ReModa — Calidad increíble en cada costura.</p>
     </footer>
+
+    <!-- INTERACTIVIDAD CON JAVASCRIPT -->
+    <script>
+        function openModal(imageSrc, title, description) {
+            document.getElementById('modalImage').src = imageSrc;
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDescription').innerText = description;
+            
+            document.getElementById('productModal').classList.add('active');
+        }
+
+        function closeModal(event) {
+            // Cierra si se da clic en la X o fuera del contenido del modal
+            document.getElementById('productModal').classList.remove('active');
+        }
+    </script>
 
 </body>
 </html>
